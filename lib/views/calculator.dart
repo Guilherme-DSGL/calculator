@@ -8,11 +8,14 @@ class CalculatorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        Display(),
-        KeyBoard(),
-      ],
+    return Scaffold(
+      backgroundColor: Colors.grey,
+      body: Column(
+        children: const [
+          Flexible(flex: 1, child: Display()),
+          Flexible(flex: 4, child: KeyBoard()),
+        ],
+      ),
     );
   }
 }
