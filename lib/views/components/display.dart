@@ -15,13 +15,12 @@ class Display extends StatelessWidget {
       child: Align(
         alignment: Alignment.bottomRight,
         child: AutoSizeText(
-          displayText == '' ? '0' : displayText,
+          displayText,
           minFontSize: 25,
           maxFontSize: 50,
           maxLines: 1,
-          style: TextStyle(
-              color: (displayText) == '' ? Colors.grey.withOpacity(0.7) : white,
-              fontSize: 50),
+          style: const TextStyle(
+              color: white, fontSize: 50, fontWeight: FontWeight.normal),
         ),
       ),
     );

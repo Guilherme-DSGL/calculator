@@ -1,8 +1,9 @@
 class Brain {
   List<String> operations = ['+', '-', '*', '/', '%'];
-  String _displayText = '';
+  String _displayText = '0';
   String _operator = '';
   List<double> _numbers = [];
+  bool clear = false;
 
   String get displayText {
     return _displayText;
@@ -13,25 +14,28 @@ class Brain {
       allClear();
     } else if (command == '<-') {
       backSpace();
-    } else if (operations.contains(command)) {
+    } else if (operations.contains(command) && _operator == '') {
       saveInMemory(_displayText, command);
     } else if (command == '=') {
       saveInMemory(_displayText);
       operator();
-    } else if (command == '.' && (displayTextIsNull() || isDouble())) {
+    } else if (command == '.' && isDouble()) {
       return;
-    } else if (command != '<-') {
-      _displayText += command;
+    } else if (command != '<-' &&
+        command != '=' &&
+        !operations.contains(command)) {
+      digits(command);
     }
   }
 
   allClear() {
-    _displayText = '';
+    _displayText = '0';
     _numbers = [];
   }
 
-  clearNumbers() {
+  clearMemory() {
     _numbers = [];
+    _operator = '';
   }
 
   isDouble() {
@@ -39,20 +43,20 @@ class Brain {
   }
 
   bool displayTextIsNull() {
-    return _displayText == '' ? true : false;
+    return _displayText.length == 1 ? true : false;
   }
 
   backSpace() {
     (displayTextIsNull())
-        ? null
+        ? _displayText = '0'
         : _displayText =
             _displayText.replaceRange(_displayText.length - 1, null, '');
   }
 
   saveInMemory(String value, [String command = '']) {
-    (displayTextIsNull()) ? null : _numbers.add(double.parse(value));
+    _numbers.add(double.parse(value));
     command == '' ? null : _operator = command;
-    operations.contains(command) ? _displayText = '' : null;
+    clear = true;
   }
 
   operator() {
@@ -73,6 +77,12 @@ class Brain {
         _displayText = '${_numbers[0] % _numbers[1]}';
         break;
     }
-    clearNumbers();
+    clearMemory();
+  }
+
+  digits(String command) {
+    (_displayText == '0' && command != '.') ? _displayText = '' : null;
+    (clear) ? {_displayText = '', clear = false} : null;
+    _displayText += command;
   }
 }
