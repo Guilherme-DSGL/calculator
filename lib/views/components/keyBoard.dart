@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'keyBoardKey.dart';
+import 'keyboard_key.dart';
 
 class KeyBoard extends StatelessWidget {
-  const KeyBoard({Key? key}) : super(key: key);
-
+  const KeyBoard({Key? key, required this.function}) : super(key: key);
+  final void Function(String) function;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -14,26 +14,27 @@ class KeyBoard extends StatelessWidget {
           children: [
             Flexible(
                 flex: 1,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '/',
-                  function: () {
-                    print('asdasd');
-                  },
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '*',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
-                flex: 2,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                flex: 1,
+                child: KeyBoardKey.action(
+                  text: 'AC',
+                  function: function,
+                )),
+            Flexible(
+                flex: 1,
+                child: KeyBoardKey.action(
                   text: '<-',
-                  function: () {},
+                  function: function,
                 )),
           ],
         ),
@@ -45,32 +46,26 @@ class KeyBoard extends StatelessWidget {
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '1',
-                  function: () {
-                    print('asdasd');
-                  },
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '2',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '3',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '+',
-                  function: () {},
+                  function: function,
                 )),
           ],
         ),
@@ -82,32 +77,26 @@ class KeyBoard extends StatelessWidget {
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '4',
-                  function: () {
-                    print('asdasd');
-                  },
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '5',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '6',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '-',
-                  function: () {},
+                  function: function,
                 )),
           ],
         ),
@@ -119,32 +108,26 @@ class KeyBoard extends StatelessWidget {
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '7',
-                  function: () {
-                    print('asdasd');
-                  },
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '8',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '9',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '%',
-                  function: () {},
+                  function: function,
                 )),
           ],
         ),
@@ -156,25 +139,20 @@ class KeyBoard extends StatelessWidget {
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '0',
-                  function: () {
-                    print('asdasd');
-                  },
+                  function: function,
                 )),
             Flexible(
                 flex: 1,
                 child: KeyBoardKey(
-                  color: Colors.orange,
                   text: '.',
-                  function: () {},
+                  function: function,
                 )),
             Flexible(
                 flex: 2,
-                child: KeyBoardKey(
-                  color: Colors.orange,
+                child: KeyBoardKey.action(
                   text: '=',
-                  function: () {},
+                  function: function,
                 )),
           ],
         ),
